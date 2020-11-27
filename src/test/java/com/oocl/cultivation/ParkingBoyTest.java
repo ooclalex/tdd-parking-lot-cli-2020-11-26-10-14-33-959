@@ -11,7 +11,7 @@ class ParkingBoyTest {
     void should_parking_boy_call_parking_lot_park_function_once_when_park_the_car_given_parking_boy_car_parking_lot_with_available_capacity() {
         // given
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
 
         // when
