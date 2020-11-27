@@ -3,6 +3,8 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class ParkingLotTest {
     @Test
@@ -93,5 +95,19 @@ public class ParkingLotTest {
 
         //then
         assertNull(fetchCar);
+    }
+
+    @Test
+    void should_throw_not_enough_position_exception_when_park_car_given_parking_lot_with_full_capacity() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        parkingLot.park(car);
+        assertThrows(NotEnoughPositionException.class,() -> parkingLot.park(new Car()), "Not Enough Position");
+
+        //when
+
+        //then
+        verify(parkingLot, times(1)).park(car);
     }
 }
