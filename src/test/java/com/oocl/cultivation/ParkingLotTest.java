@@ -16,6 +16,5 @@ public class ParkingLotTest {
 
         // then
         assertNotNull(ticket);
-
     }
 }
