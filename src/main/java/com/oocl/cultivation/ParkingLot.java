@@ -12,6 +12,10 @@ public class ParkingLot {
             return null;
         }
         this.capacity--;
-        return new Ticket();
+        return new Ticket(car);
+    }
+
+    public Car fetchCar(Ticket ticket) {
+        return null;
     }
 }
