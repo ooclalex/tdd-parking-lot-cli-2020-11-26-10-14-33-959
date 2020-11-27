@@ -10,6 +10,7 @@ public class ParkingBoy {
         return this.parkingLot.park(car);
     }
 
-    public void fetchCar(Ticket ticket) {
+    public Car fetchCar(Ticket ticket) {
+        return this.parkingLot.fetchCar(ticket);
     }
 }
