@@ -20,4 +20,19 @@ class ParkingBoyTest {
         // then
         verify(parkingLot, times(1)).park(car);
     }
+
+    @Test
+    void should_return_a_car_when_fetch_the_car_given_parking_boy_parking_ticket_and_parking_lot_with_available_capacity() {
+        // given
+        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+
+        // when
+        parkingBoy.fetchCar(ticket);
+
+        // then
+        verify(parkingLot, times(1)).fetchCar(ticket);
+    }
 }

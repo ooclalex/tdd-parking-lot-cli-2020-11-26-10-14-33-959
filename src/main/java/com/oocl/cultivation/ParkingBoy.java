@@ -9,4 +9,7 @@ public class ParkingBoy {
     public Ticket park(Car car) {
         return this.parkingLot.park(car);
     }
+
+    public void fetchCar(Ticket ticket) {
+    }
 }
