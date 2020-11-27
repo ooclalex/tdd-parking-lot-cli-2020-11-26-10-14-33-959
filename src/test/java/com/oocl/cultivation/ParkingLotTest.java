@@ -2,8 +2,7 @@ package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
     @Test
@@ -34,5 +33,21 @@ public class ParkingLotTest {
         assertNotNull(ticket1);
         assertNotNull(ticket2);
         assertNotEquals(ticket1, ticket2);
+    }
+
+    @Test
+    void should_only_one_car_parked_when_park_multiple_cars_given_multiple_cars_and_parking_lot_with_one_capacity() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+
+        //when
+        final Ticket ticket1 = parkingLot.park(car1);
+        final Ticket ticket2 = parkingLot.park(car2);
+
+        //then
+        assertNotNull(ticket1);
+        assertNull(ticket2);
     }
 }
