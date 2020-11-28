@@ -63,4 +63,25 @@ class ParkingBoyTest {
         //then
         assertNotNull(ticket);
     }
+
+    @Test
+    void should_fetch_car_in_second_parking_lot_when_fetch_the_car_given_parking_boy_parking_lots_and_ticket_for_car_in_second_parking_lot() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        parkingBoy.park(car1);
+        Ticket ticket = parkingBoy.park(car2);
+
+        //when
+        Car car = parkingBoy.fetchCar(ticket);
+
+        //then
+        assertNotNull(car);
+    }
 }
