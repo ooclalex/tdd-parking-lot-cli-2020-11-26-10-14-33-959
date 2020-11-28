@@ -9,7 +9,7 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public Ticket park(Car car)  {
+    public Ticket park(Car car) throws NotEnoughPositionException {
         for (ParkingLot parkingLot: parkingLots) {
             try {
                 return parkingLot.park(car);
@@ -18,7 +18,7 @@ public class ParkingBoy {
 
             }
         }
-        return null;
+        throw new NotEnoughPositionException();
     }
 
     public Car fetchCar(Ticket ticket) {
