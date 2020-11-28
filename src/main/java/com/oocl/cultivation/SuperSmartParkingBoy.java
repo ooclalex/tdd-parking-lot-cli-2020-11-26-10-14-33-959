@@ -15,6 +15,6 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         if (largerAvailablePositionRateParkingLot != null) {
             return largerAvailablePositionRateParkingLot.park(car);
         }
-        return null;
+        throw new NotEnoughPositionException();
     }
 }
