@@ -6,7 +6,7 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -83,5 +83,29 @@ class ParkingBoyTest {
 
         //then
         assertNotNull(car);
+    }
+
+    @Test
+    void should_return_null_when_park_the_car_given_parking_boy_car_and_two_full_parking_lots() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+
+        //when
+        NotEnoughPositionException notEnoughPosition =
+                assertThrows(NotEnoughPositionException.class,() -> parkingBoy.park(new Car()));
+
+
+        //then
+        assertEquals("Not Enough Position", notEnoughPosition.getMessage());
     }
 }
