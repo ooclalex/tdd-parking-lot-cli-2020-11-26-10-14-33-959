@@ -20,9 +20,12 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetchCar(Ticket ticket) {
+    public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicketException {
         Car fetchedCar = ticketCarHashMap.get(ticket);
         ticketCarHashMap.remove(ticket);
+        if (fetchedCar == null) {
+            throw new UnrecognizedParkingTicketException();
+        }
         return fetchedCar;
     }
 }

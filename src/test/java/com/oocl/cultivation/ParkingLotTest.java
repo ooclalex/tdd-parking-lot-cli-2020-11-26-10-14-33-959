@@ -38,7 +38,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_car_when_fetch_car_given_parking_ticket_parking_lot_that_parked_the_car() throws NotEnoughPositionException {
+    void should_return_car_when_fetch_car_given_parking_ticket_parking_lot_that_parked_the_car() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -49,36 +49,6 @@ public class ParkingLotTest {
 
         //then
         assertEquals(car, actualCar);
-    }
-
-    @Test
-    void should_not_return_car_when_fetch_car_given_used_parking_ticket_parking_lot_that_parked_the_car() throws NotEnoughPositionException {
-        //given
-        ParkingLot parkingLot = new ParkingLot(1);
-        Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
-
-        //when
-        Car fetchCar = parkingLot.fetchCar(ticket);
-        Car actualCar = parkingLot.fetchCar(ticket);
-
-        //then
-        assertNull(actualCar);
-    }
-
-    @Test
-    void should_not_return_car_when_fetch_car_given_fake_parking_ticket() throws NotEnoughPositionException {
-        //given
-        ParkingLot parkingLot = new ParkingLot(1);
-        Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
-        Ticket fakeTicket = new Ticket();
-
-        //when
-        Car fetchCar = parkingLot.fetchCar(fakeTicket);
-
-        //then
-        assertNull(fetchCar);
     }
 
     @Test
@@ -96,9 +66,12 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_and_fake_ticket() {
+    // IDE told me to remove the throw UnrecognizedParkingTicketException
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_and_fake_ticket() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        Ticket realTicket = parkingLot.park(car);
         Ticket fakeTicket = new Ticket();
 
         //when
@@ -106,6 +79,22 @@ public class ParkingLotTest {
                 assertThrows(UnrecognizedParkingTicketException.class,() -> parkingLot.fetchCar(fakeTicket));
 
         //then
-        assertEquals("Not Enough Position", unrecognizedParkingTicket.getMessage());
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicket.getMessage());
+    }
+
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_and_used_ticket() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
+        parkingLot.fetchCar(ticket);
+
+        //when
+        UnrecognizedParkingTicketException unrecognizedParkingTicket =
+                assertThrows(UnrecognizedParkingTicketException.class,() -> parkingLot.fetchCar(ticket));
+
+        //then
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicket.getMessage());
     }
 }
