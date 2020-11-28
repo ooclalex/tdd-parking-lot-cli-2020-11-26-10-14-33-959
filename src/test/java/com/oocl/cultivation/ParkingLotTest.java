@@ -87,11 +87,25 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         parkingLot.park(car);
-        NotEnoughPositionException notEnoughPosition = assertThrows(NotEnoughPositionException.class,() -> parkingLot.park(new Car()));
 
         //when
+        NotEnoughPositionException notEnoughPosition = assertThrows(NotEnoughPositionException.class,() -> parkingLot.park(new Car()));
 
         //then
         assertEquals("Not Enough Position", notEnoughPosition.getMessage());
+    }
+
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_and_fake_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Ticket fakeTicket = new Ticket();
+
+        //when
+        UnrecognizedParkingTicketException unrecognizedParkingTicket =
+                assertThrows(UnrecognizedParkingTicketException.class,() -> parkingLot.fetchCar(fakeTicket));
+
+        //then
+        assertEquals("Not Enough Position", unrecognizedParkingTicket.getMessage());
     }
 }
