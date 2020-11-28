@@ -96,7 +96,6 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car1 = new Car();
         Car car2 = new Car();
-        Car car3 = new Car();
         parkingBoy.park(car1);
         parkingBoy.park(car2);
 
@@ -107,25 +106,5 @@ class ParkingBoyTest {
 
         //then
         assertEquals("Not Enough Position", notEnoughPosition.getMessage());
-    }
-
-    @Test
-    void should_park_in_emptier_parking_lot_when_park_the_car_given_parking_boy_parking_lots() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
-        //given
-        ParkingLot parkingLot1 = new ParkingLot(2);
-        ParkingLot parkingLot2 = new ParkingLot(2);
-        List<ParkingLot> parkingLots = new ArrayList<>();
-        parkingLots.add(parkingLot1);
-        parkingLots.add(parkingLot2);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
-        Car car1 = new Car();
-        Car car2 = new Car();
-        superParkingBoy.park(car1);
-
-        //when
-        Ticket ticket = superParkingBoy.park(car2);
-
-        //then
-        assertEquals(car2, parkingLot2.fetchCar(ticket));
     }
 }

@@ -3,9 +3,9 @@ package com.oocl.cultivation;
 import java.util.Comparator;
 import java.util.List;
 
-public class SuperParkingBoy extends ParkingBoy{
+public class SmartParkingBoy extends ParkingBoy{
 
-    public SuperParkingBoy(List<ParkingLot> parkingLots) {
+    public SmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }
 
