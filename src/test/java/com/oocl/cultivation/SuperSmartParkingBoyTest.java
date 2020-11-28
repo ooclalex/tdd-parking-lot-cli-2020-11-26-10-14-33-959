@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuperSmartParkingBoyTest {
 
     @Test
-    void should_park_in_larger_available_position_rate_parking_lot_when_park_the_car_given_super_smart_parking_boy_parking_lots() throws UnrecognizedParkingTicketException {
+    void should_park_in_larger_available_position_rate_parking_lot_when_park_the_car_given_super_smart_parking_boy_parking_lots()
+            throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(2);
