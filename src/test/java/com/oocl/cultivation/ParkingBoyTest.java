@@ -110,7 +110,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_park_in_emptier_parking_lot_when_park_the_car_given_parking_boy_parking_lots() throws UnrecognizedParkingTicketException {
+    void should_park_in_emptier_parking_lot_when_park_the_car_given_parking_boy_parking_lots() throws UnrecognizedParkingTicketException, NotEnoughPositionException {
         //given
         ParkingLot parkingLot1 = new ParkingLot(2);
         ParkingLot parkingLot2 = new ParkingLot(2);

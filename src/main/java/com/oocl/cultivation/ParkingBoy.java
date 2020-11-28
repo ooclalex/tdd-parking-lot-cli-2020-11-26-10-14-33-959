@@ -32,4 +32,8 @@ public class ParkingBoy {
         }
         return null;
     }
+
+    public List<ParkingLot> getParkingLots() {
+        return this.parkingLots;
+    }
 }
