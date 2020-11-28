@@ -1,17 +1,35 @@
 package com.oocl.cultivation;
 
+import java.util.List;
+
 public class ParkingBoy {
-    private final ParkingLot parkingLot;
+    private final List<ParkingLot> parkingLots;
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
-    public Ticket park(Car car) throws NotEnoughPositionException {
-        return this.parkingLot.park(car);
+    public Ticket park(Car car)  {
+        for (ParkingLot parkingLot: parkingLots) {
+            try {
+                return parkingLot.park(car);
+            }
+            catch (NotEnoughPositionException ignored) {
+
+            }
+        }
+        return null;
     }
 
-    public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicketException {
-        return this.parkingLot.fetchCar(ticket);
+    public Car fetchCar(Ticket ticket) {
+        for (ParkingLot parkingLot: parkingLots) {
+            try {
+                return parkingLot.fetchCar(ticket);
+            }
+            catch (UnrecognizedParkingTicketException ignored) {
+
+            }
+        }
+        return null;
     }
 }
