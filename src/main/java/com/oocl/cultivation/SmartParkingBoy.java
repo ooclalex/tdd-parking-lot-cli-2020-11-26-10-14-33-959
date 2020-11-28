@@ -16,6 +16,6 @@ public class SmartParkingBoy extends ParkingBoy{
         if (emptyParkingLot != null) {
             return emptyParkingLot.park(car);
         }
-        return null;
+        throw new NotEnoughPositionException();
     }
 }
