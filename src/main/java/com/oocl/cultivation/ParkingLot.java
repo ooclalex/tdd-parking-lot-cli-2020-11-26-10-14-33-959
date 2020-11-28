@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class ParkingLot {
     private final int capacity;
     private final HashMap<Ticket, Car> ticketCarHashMap;
+
     public ParkingLot(int capacity) {
         this.capacity = capacity;
         this.ticketCarHashMap = new HashMap<>();
