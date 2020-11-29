@@ -3,6 +3,7 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,10 +27,13 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_parking_boy_park_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list()  {
+    void should_parking_boy_park_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
         //given
         ParkingLotServiceManager manager = new ParkingLotServiceManager();
-        ParkingBoy parkingBoy = new ParkingBoy(new ArrayList<>());
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         manager.addToManagementList(parkingBoy);
         Car car = new Car();
 

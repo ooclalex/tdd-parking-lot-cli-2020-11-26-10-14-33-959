@@ -17,7 +17,10 @@ public class ParkingLotServiceManager {
         return this.managementList;
     }
 
-    public Ticket specifyParkingBoyToPark(ParkingBoy parkingBoy, Car car) {
+    public Ticket specifyParkingBoyToPark(ParkingBoy parkingBoy, Car car) throws NotEnoughPositionException {
+        if (this.managementList.contains(parkingBoy)) {
+            return parkingBoy.park(car);
+        }
         return null;
     }
 }
