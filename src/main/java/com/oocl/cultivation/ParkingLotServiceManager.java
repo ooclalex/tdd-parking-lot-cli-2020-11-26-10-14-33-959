@@ -6,7 +6,7 @@ import java.util.List;
 public class ParkingLotServiceManager {
     private List<ParkingBoy> managementList;
 
-    public ParkingLotServiceManager() {
+    public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
         managementList = new ArrayList<>();
     }
     public void addToManagementList(ParkingBoy parkingBoy) {
@@ -33,5 +33,9 @@ public class ParkingLotServiceManager {
 
     public void removeFromManagementList(ParkingBoy parkingBoy) {
         this.managementList.remove(parkingBoy);
+    }
+
+    public Ticket park(Car car) {
+        return null;
     }
 }

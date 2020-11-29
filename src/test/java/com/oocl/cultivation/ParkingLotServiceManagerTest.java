@@ -11,7 +11,7 @@ public class ParkingLotServiceManagerTest {
     @Test
     void should_add_parking_boys_to_management_list_when_add_parking_boy_given_manager_and_parking_boys()  {
         //given
-        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingBoy parkingBoy = new ParkingBoy(new ArrayList<>());
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(new ArrayList<>());
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy((new ArrayList<>()));
@@ -28,7 +28,7 @@ public class ParkingLotServiceManagerTest {
     @Test
     void should_parking_boy_park_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
         //given
-        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot);
@@ -46,7 +46,7 @@ public class ParkingLotServiceManagerTest {
     @Test
     void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_given_manager_and_parking_boy() throws NotEnoughPositionException {
         //given
-        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot);
@@ -63,7 +63,7 @@ public class ParkingLotServiceManagerTest {
     @Test
     void should_parking_boy_fetch_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
         //given
-        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot);
@@ -82,7 +82,7 @@ public class ParkingLotServiceManagerTest {
     @Test
     void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_to_fetch_car_given_manager_and_parking_boy() throws NotEnoughPositionException {
         //given
-        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot);
@@ -96,5 +96,21 @@ public class ParkingLotServiceManagerTest {
 
         //then
         assertNull(fetchedCar);
+    }
+
+    @Test
+    void should_return_ticket_when_parking_manager_parks_car_given_manager_and_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLot);
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(parkingLotList);
+        Car car = new Car();
+
+        //when
+        Ticket ticket = manager.park(car);
+
+        //then
+        assertNotNull(ticket);
     }
 }
