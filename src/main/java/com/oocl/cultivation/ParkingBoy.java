@@ -21,7 +21,7 @@ public class ParkingBoy {
         throw new NotEnoughPositionException();
     }
 
-    public Car fetchCar(Ticket ticket) {
+    public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicketException {
         for (ParkingLot parkingLot: parkingLots) {
             try {
                 return parkingLot.fetchCar(ticket);
@@ -30,7 +30,7 @@ public class ParkingBoy {
 
             }
         }
-        return null;
+        throw new UnrecognizedParkingTicketException();
     }
 
     public List<ParkingLot> getParkingLots() {

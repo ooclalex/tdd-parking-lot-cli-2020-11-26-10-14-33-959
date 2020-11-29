@@ -25,7 +25,7 @@ public class ParkingLotServiceManager extends ParkingBoy{
         return null;
     }
 
-    public Car specifyParkingBoyToFetch(ParkingBoy parkingBoy, Ticket ticket) {
+    public Car specifyParkingBoyToFetch(ParkingBoy parkingBoy, Ticket ticket) throws UnrecognizedParkingTicketException {
         if (this.managementList.contains(parkingBoy)) {
             return parkingBoy.fetchCar(ticket);
         }

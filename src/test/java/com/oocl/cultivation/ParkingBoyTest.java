@@ -65,7 +65,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_fetch_car_in_second_parking_lot_when_fetch_the_car_given_parking_boy_parking_lots_and_ticket_for_car_in_second_parking_lot() throws NotEnoughPositionException {
+    void should_fetch_car_in_second_parking_lot_when_fetch_the_car_given_parking_boy_parking_lots_and_ticket_for_car_in_second_parking_lot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);

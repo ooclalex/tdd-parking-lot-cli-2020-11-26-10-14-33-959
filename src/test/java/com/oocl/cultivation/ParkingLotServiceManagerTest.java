@@ -61,7 +61,7 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_parking_boy_fetch_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
+    void should_parking_boy_fetch_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
@@ -80,7 +80,7 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_to_fetch_car_given_manager_and_parking_boy() throws NotEnoughPositionException {
+    void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_to_fetch_car_given_manager_and_parking_boy() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         ParkingLot parkingLot = new ParkingLot(1);
@@ -115,7 +115,7 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_car_when_parking_manager_fetch_car_given_manager_and_ticket() throws NotEnoughPositionException {
+    void should_return_car_when_parking_manager_fetch_car_given_manager_and_ticket() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
