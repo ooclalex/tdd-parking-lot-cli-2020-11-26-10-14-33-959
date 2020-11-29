@@ -159,7 +159,7 @@ public class ParkingLotServiceManagerTest {
         ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
         manager.addToManagementList(parkingBoy);
         Car car = new Car();
-        Ticket ticket = manager.specifyParkingBoyToPark(parkingBoy, car);
+        manager.specifyParkingBoyToPark(parkingBoy, car);
 
         //when
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class,() ->
