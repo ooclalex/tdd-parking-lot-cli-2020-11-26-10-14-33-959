@@ -3,10 +3,11 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLotServiceManager {
+public class ParkingLotServiceManager extends ParkingBoy{
     private List<ParkingBoy> managementList;
 
     public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
+        super(parkingLots);
         managementList = new ArrayList<>();
     }
     public void addToManagementList(ParkingBoy parkingBoy) {
@@ -33,9 +34,5 @@ public class ParkingLotServiceManager {
 
     public void removeFromManagementList(ParkingBoy parkingBoy) {
         this.managementList.remove(parkingBoy);
-    }
-
-    public Ticket park(Car car) {
-        return null;
     }
 }

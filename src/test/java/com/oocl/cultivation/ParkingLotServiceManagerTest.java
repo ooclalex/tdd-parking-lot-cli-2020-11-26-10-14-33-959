@@ -99,7 +99,7 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_ticket_when_parking_manager_parks_car_given_manager_and_car() {
+    void should_return_ticket_when_parking_manager_parks_car_given_manager_and_car() throws NotEnoughPositionException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         List<ParkingLot> parkingLotList = new ArrayList<>();
