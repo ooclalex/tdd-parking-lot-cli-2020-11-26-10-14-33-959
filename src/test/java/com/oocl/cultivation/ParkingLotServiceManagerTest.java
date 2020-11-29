@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ParkingLotServiceManagerTest {
     @Test
@@ -22,5 +23,20 @@ public class ParkingLotServiceManagerTest {
 
         //then
         assertEquals(3, manager.getManagementList().size());
+    }
+
+    @Test
+    void should_parking_boy_park_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list()  {
+        //given
+        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingBoy parkingBoy = new ParkingBoy(new ArrayList<>());
+        manager.addToManagementList(parkingBoy);
+        Car car = new Car();
+
+        //when
+        Ticket ticket = manager.specifyParkingBoyToPark(parkingBoy, car);
+
+        //then
+        assertNotNull(ticket);
     }
 }

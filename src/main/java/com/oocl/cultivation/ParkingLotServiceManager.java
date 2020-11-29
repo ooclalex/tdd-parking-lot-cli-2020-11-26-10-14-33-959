@@ -16,4 +16,8 @@ public class ParkingLotServiceManager {
     public List<ParkingBoy> getManagementList() {
         return this.managementList;
     }
+
+    public Ticket specifyParkingBoyToPark(ParkingBoy parkingBoy, Car car) {
+        return null;
+    }
 }
