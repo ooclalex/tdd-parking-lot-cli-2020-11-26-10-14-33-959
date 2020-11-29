@@ -59,4 +59,23 @@ public class ParkingLotServiceManagerTest {
         //then
         assertNull(ticket);
     }
+
+    @Test
+    void should_parking_boy_fetch_car_when_parking_manager_specify_parking_boy_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
+        //given
+        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        manager.addToManagementList(parkingBoy);
+        Car car = new Car();
+        Ticket ticket = manager.specifyParkingBoyToPark(parkingBoy, car);
+
+        //when
+        Car fetchedCar = manager.specifyParkingBoyToFetch(parkingBoy, ticket);
+
+        //then
+        assertEquals(car, fetchedCar);
+    }
 }
