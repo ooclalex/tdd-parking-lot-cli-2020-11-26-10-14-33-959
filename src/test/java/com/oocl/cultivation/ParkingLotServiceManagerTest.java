@@ -44,7 +44,7 @@ public class ParkingLotServiceManagerTest {
     }
 
     @Test
-    void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
+    void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_given_manager_and_parking_boy() throws NotEnoughPositionException {
         //given
         ParkingLotServiceManager manager = new ParkingLotServiceManager();
         ParkingLot parkingLot = new ParkingLot(1);
