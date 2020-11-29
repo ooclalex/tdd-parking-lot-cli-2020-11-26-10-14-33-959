@@ -25,6 +25,9 @@ public class ParkingLotServiceManager {
     }
 
     public Car specifyParkingBoyToFetch(ParkingBoy parkingBoy, Ticket ticket) {
+        if (this.managementList.contains(parkingBoy)) {
+            return parkingBoy.fetchCar(ticket);
+        }
         return null;
     }
 }
