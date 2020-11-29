@@ -148,4 +148,24 @@ public class ParkingLotServiceManagerTest {
         //then
         assertEquals("Not Enough Position", notEnoughPosition.getMessage());
     }
+
+    @Test
+    void should_throw_unrecognized_ticket_exception_when_parking_manager_specify_parking_boy_to_fetch_given_parking_manager_parking_boy_ticket() throws NotEnoughPositionException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        ParkingLotServiceManager manager = new ParkingLotServiceManager(new ArrayList<>());
+        manager.addToManagementList(parkingBoy);
+        Car car = new Car();
+        Ticket ticket = manager.specifyParkingBoyToPark(parkingBoy, car);
+
+        //when
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class,() ->
+                manager.specifyParkingBoyToFetch(parkingBoy, new Ticket()));
+
+        //then
+        assertEquals("Unrecognized Parking Ticket", unrecognizedParkingTicketException.getMessage());
+    }
 }
