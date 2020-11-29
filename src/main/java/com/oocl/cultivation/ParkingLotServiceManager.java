@@ -30,4 +30,8 @@ public class ParkingLotServiceManager {
         }
         return null;
     }
+
+    public void removeFromManagementList(ParkingBoy parkingBoy) {
+        this.managementList.remove(parkingBoy);
+    }
 }
