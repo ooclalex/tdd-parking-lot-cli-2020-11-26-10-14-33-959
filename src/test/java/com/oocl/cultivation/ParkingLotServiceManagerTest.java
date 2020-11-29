@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotServiceManagerTest {
     @Test
@@ -42,5 +41,22 @@ public class ParkingLotServiceManagerTest {
 
         //then
         assertNotNull(ticket);
+    }
+
+    @Test
+    void should_return_null_when_parking_manager_specify_parking_boy_not_in_list_given_manager_and_parking_boy_in_management_list() throws NotEnoughPositionException {
+        //given
+        ParkingLotServiceManager manager = new ParkingLotServiceManager();
+        ParkingLot parkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+
+        //when
+        Ticket ticket = manager.specifyParkingBoyToPark(parkingBoy, car);
+
+        //then
+        assertNull(ticket);
     }
 }
