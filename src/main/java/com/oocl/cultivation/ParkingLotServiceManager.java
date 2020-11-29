@@ -8,10 +8,10 @@ public class ParkingLotServiceManager extends ParkingBoy{
 
     public ParkingLotServiceManager(List<ParkingLot> parkingLots) {
         super(parkingLots);
-        managementList = new ArrayList<>();
+        this.managementList = new ArrayList<>();
     }
     public void addToManagementList(ParkingBoy parkingBoy) {
-        managementList.add(parkingBoy);
+        this.managementList.add(parkingBoy);
     }
 
     public List<ParkingBoy> getManagementList() {
